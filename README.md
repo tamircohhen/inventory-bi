@@ -1,100 +1,92 @@
-# מערכת BI לניהול מלאי
+Inventory BI Project
+Overview
 
-פרויקט זה מציג מערכת BI מלאה לניהול וניתוח מלאי ומכירות.  
-המערכת בנויה על בסיס **PostgreSQL**, **Python**, **Pandas**, **SQLAlchemy**, **Streamlit** ו־**Plotly**, ומדמה סביבת עבודה עסקית אמיתית.  
+This project provides a Business Intelligence (BI) solution for managing and analyzing inventory data.
+It is designed for academic and professional use, with a focus on data visualization, dashboard creation, and integration with modern BI tools.
 
----
+Features
 
-## מטרות הפרויקט
-- ניתוח מלאי: זיהוי מוצרים מתחת לרף המינימום והצגת פילוח לפי קטגוריות.  
-- ניתוח מכירות: הצגת מגמות מכירות חודשיות וניתוח לפי קטגוריות מוצרים.  
-- תחזית: חיזוי מכירות עתידי באמצעות מודל Machine Learning (Linear Regression).  
-- SQL חופשי: יכולת להריץ שאילתות מותאמות אישית מתוך הממשק.  
+Data ingestion from CSV/Excel/Database sources
 
----
+Automated ETL pipeline for cleaning and transforming raw inventory data
 
-## טכנולוגיות בשימוש
-- **PostgreSQL** – מסד נתונים רלציוני לניהול המידע.  
-- **Docker + Adminer** – הקמה וניהול סביבה מבוססת קונטיינרים.  
-- **Python (Pandas, NumPy, SQLAlchemy, Scikit-learn)** – עיבוד נתונים ו־Machine Learning.  
-- **Streamlit** – פיתוח דשבורד אינטראקטיבי.  
-- **Plotly** – גרפים אינטראקטיביים ברמה גבוהה.  
-- **dotenv** – ניהול משתני סביבה מאובטחים.  
+Interactive dashboards for business insights
 
----
+KPI tracking (e.g., stock levels, sales performance, reorder alerts)
 
-## מבנה הפרויקט
-inventory-bi/
-│
-├── app/
-│ └── streamlit_app.py # קובץ האפליקציה הראשי (הדשבורד)
-│
-├── etl/
-│ └── load_csv_to_db.py # סקריפט טעינת נתוני דמה למסד הנתונים
-│
-├── sql/
-│ └── schema.sql # סכימת בסיס הנתונים
-│
-├── docker-compose.yml # הפעלת PostgreSQL ו-Adminer בקונטיינרים
-├── requirements.txt # ספריות פייתון נדרשות
-├── .env # משתני סביבה (DB host, user, password)
-└── README.md # תיעוד הפרויקט
+Scalable structure for future expansion
 
----
+Technologies
 
-## התקנה והרצה מקומית
+Python – Data processing and ETL
 
-### שלב 1 – שיבוט המאגר
-```bash
-git clone https://github.com/<username>/inventory-bi.git
+Pandas / NumPy – Data analysis
+
+SQL – Database integration
+
+Power BI / Tableau – Visualization (optional)
+
+GitHub – Version control and collaboration
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/your-username/inventory-bi.git
 cd inventory-bi
-שלב 2 – יצירת סביבת פיתוח והתקנת תלויות
-python -m venv .venv
-source .venv/bin/activate
+
+
+Create a virtual environment:
+
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+
+
+Install dependencies:
+
 pip install -r requirements.txt
 
-שלב 3 – הפעלת מסד הנתונים עם Docker
-docker compose up -d
+Usage
+
+Place your raw data files inside the data/ folder.
+
+Run the ETL script:
+
+python src/etl.py
 
 
-בדיקה: Adminer יעלה בכתובת http://localhost:8080
-.
+Access the cleaned dataset in the output/ folder.
 
-שלב 4 – טעינת נתונים למסד
-python etl/load_csv_to_db.py
+Use the output file in Power BI or Tableau for dashboards.
 
-שלב 5 – הפעלת הדשבורד
-streamlit run app/streamlit_app.py
+Project Structure
+inventory-bi/
+│
+├── data/               # Input data (CSV/Excel/Database exports)
+├── output/             # Processed data files
+├── src/                # Source code (ETL, utils, processing scripts)
+├── notebooks/          # Jupyter notebooks for analysis
+├── requirements.txt    # Python dependencies
+├── README.md           # Project documentation
+└── .gitignore          # Git ignore file
 
+Contribution
 
-המערכת תעלה על http://localhost:8501
-.
+Contributions are welcome.
+Please follow these steps:
 
-פיצ'רים מרכזיים
+Fork the repository
 
-KPI ראשיים – מציגים במבט אחד את מצב המלאי והמוצרים הקריטיים.
+Create a feature branch (git checkout -b feature-name)
 
-גרפים אינטראקטיביים – מכירות חודשיות, פילוח לפי קטגוריות ומלאי.
+Commit your changes (git commit -m "Description")
 
-מודול חיזוי – תחזית מכירות ל־6 חודשים קדימה באמצעות Machine Learning.
+Push to the branch (git push origin feature-name)
 
-SQL חופשי – ממשק להרצת שאילתות מותאמות אישית מתוך הדשבורד.
+Open a Pull Request
 
-דוגמאות מסך
+License
 
-(כאן תוכל להוסיף צילומי מסך של הדשבורד לאחר ההרצה)
-
-הערות
-
-פרויקט זה מדגים יכולות BI מלאות: עבודה עם דאטה, עיבוד, חיבור ל־DB, הצגת תובנות, ו־ML בסיסי.
-
-מיועד להצגה כפרויקט פורטפוליו מקצועי לסטודנט לניהול מערכות מידע / דאטה אנליסט.
-
-
----
-
-💡 המלצה:  
-תוסיף צילומי מסך יפים של הדשבורד שלך לתיקיית `docs/` ותצרף אותם ל־README עם Markdown, למשל:  
-
-```markdown
-![Dashboard Overview](docs/dashboard.png)
+This project is licensed under the MIT License – see the LICENSE
+ file for details.
