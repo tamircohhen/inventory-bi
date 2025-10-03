@@ -32,7 +32,7 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/your-username/inventory-bi.git
+git clone https://github.com/tamircohhen/inventory-bi.git
 cd inventory-bi
 
 
